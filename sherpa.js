@@ -1,5 +1,5 @@
 /*jshint laxcomma:true strict:false*/
-/*globals require*/
+/*globals module require*/
 var fs   = require("fs")
   , path = require("path")
   , util = require('util');
@@ -35,7 +35,7 @@ function walk (start, callback) {
   });
 }
 
-function watch (root, interval, callback) {
+module.exports = function (root, interval, callback) {
   if (arguments.length < 2) {
     throw("Invalid arguments");
   }

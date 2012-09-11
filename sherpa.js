@@ -1,12 +1,7 @@
 /*jshint laxcomma:true strict:false*/
-/*globals module require*/
+/*globals console module require*/
 var fs   = require("fs")
-  , path = require("path")
-  , util = require('util');
-
-function puts(error, stdout/*, stderr*/) {
-  util.puts(stdout);
-}
+  , path = require("path");
 
 function walk (start, callback) {
   fs.lstat(start, function (err, stat) {
@@ -50,7 +45,7 @@ module.exports = function (root, interval, callback) {
         , interval: interval || 5007
       };
 
-  puts(null, "Watching " + root + " every " + opts.interval / 1000 + " seconds for changes...");
+  console.log("Watching", root, "every", opts.interval / 1000, "seconds for changes...");
 
   walk(root, function (err, dir, files) {
     files

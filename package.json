@@ -2,7 +2,7 @@
   "author": "Joshua T Kalis <kalisjoshua@gmail.com> (http://joshuakalis.com)",
   "name": "sherpa",
   "description": "Watch files in a directory for changes/updates",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/kalisjoshua/sherpa",
   "repository": {
     "url": "https://github.com/kalisjoshua/sherpa.git"

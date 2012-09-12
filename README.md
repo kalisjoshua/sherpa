@@ -6,7 +6,9 @@ I know that this might not be the best way to do this but it seems to work for r
 
 I have started using this in conjunction with Grunt.js so I don't have to grunt with each change to my files while developing.
 
-## Example (don't forget chmod +x <filename>)
+## Basic Usage
+
+Create a file in the root of your project with the contents below; don't forget chmod +x <filename>.
 
     /*jshint laxcomma:true strict:false*/
     /*globals require*/
@@ -34,3 +36,7 @@ I have started using this in conjunction with Grunt.js so I don't have to grunt 
         }
       }
     });
+
+## Testing
+
+I have started some simple tests using expresso. To run tests simply ensure that the npm modules are installed by executing `npm install` in the root directory. Then execute `expresso` in the root. Hopefully all tests should pass.

@@ -39,7 +39,7 @@ module.exports = {
     assert(!sherpa.valid.args([".", ""]), "last argument needs to be a callback function");
 
     invalids
-      // add in a unction as an invalid value for the first argument
+      // add in a string as an invalid value for the callback
       .concat([""])
       .forEach(function (val) {
         assert(!sherpa.valid.args(".", val), "invalid values for callback should produce an error");
@@ -48,7 +48,7 @@ module.exports = {
 
   ,"sherpa.valid.root() should validate only strings": function () {
     invalids
-      // add in a unction as an invalid value for the first argument
+      // add in a function as an invalid value for the first argument
       .concat([function () {}])
       .forEach(function (val) {
         assert(!sherpa.valid.root(val), "invalid values for root should produce an error");

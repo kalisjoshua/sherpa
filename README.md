@@ -10,9 +10,10 @@ I have started using this in conjunction with Grunt.js so I don't have to grunt 
 
 Create a file in the root of your project with the contents below; don't forget chmod +x <filename>.
 
+    #!/usr/bin/env node
     /*jshint laxcomma:true strict:false*/
     /*globals require*/
-    var sherpa = require("sherpa")
+    var sherpa = require("sherpa");
 
     var backpack = {
           js    : function (filename) {

@@ -2,17 +2,17 @@
   "author": "Joshua T Kalis <kalisjoshua@gmail.com> (http://joshuakalis.com)",
   "name": "sherpa",
   "description": "Watch files in a directory for changes/updates",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://github.com/kalisjoshua/sherpa",
   "repository": {
     "type": "git",
     "url": "https://github.com/kalisjoshua/sherpa.git"
   },
   "main": "lib/main.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "expresso": ">=0.9.2"
-    },
-  "devDependencies": {},
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"

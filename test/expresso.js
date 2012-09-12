@@ -1,7 +1,7 @@
 /*jshint strict:false*/
 /*globals module require*/
 var assert = require("assert")
-  , sherpa = require("../sherpa");
+  , sherpa = require("../");
 
 /*
   assert(value, message)

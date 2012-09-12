@@ -12,27 +12,23 @@ Create a file in the root of your project with the contents below; don't forget 
 
     /*jshint laxcomma:true strict:false*/
     /*globals require*/
-    var exec = require('child_process').exec
-      , sherpa = require("sherpa")
+    var sherpa = require("sherpa")
 
-    function notify (filename, command) {
-      sherpa.puts(null, "\nChange made to: " + filename);
-
-      command && exec(command, sherpa.puts);
-    }
+    var backpack = {
+          js    : function (filename) {
+            sherpa.exec(filename, "grunt js");
+          }
+          ,less : function (filename) {
+            sherpa.exec(filename, "grunt less");
+          }
+        };
 
     sherpa("src", 300, function (filename, curr, prev) {
       if (+curr.mtime !== +prev.mtime) {
-        switch (/.*\.(.*)$/.exec(filename)[1]) {
-          case "js":
-            notify(filename, "grunt js");
-            break;
-          case "less":
-            notify(filename, "grunt less");
-            break;
-          default:
-            notify(filename + " but no action was taken");
-            break;
+        try {
+          backpack[/.*\.(.*)$/.exec(filename)[1]](filename);
+        } catch (e) {
+          sherpa.exec(filename + "\n But I don't know what to do with it. :-(");
         }
       }
     });

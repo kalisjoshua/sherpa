@@ -8,16 +8,15 @@ I have started using this in conjunction with Grunt.js so I don't have to grunt 
 
 ## Example (don't forget chmod +x <filename>)
 
-    #!/usr/bin/env node
     /*jshint laxcomma:true strict:false*/
     /*globals require*/
     var exec = require('child_process').exec
       , sherpa = require("sherpa")
 
     function notify (filename, command) {
-      puts(null, "\nChange made to: " + filename);
+      sherpa.puts(null, "\nChange made to: " + filename);
 
-      command && exec(command, puts);
+      command && exec(command, sherpa.puts);
     }
 
     sherpa("src", 300, function (filename, curr, prev) {

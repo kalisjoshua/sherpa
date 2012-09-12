@@ -1,7 +1,19 @@
 /*jshint laxcomma:true strict:false*/
 /*globals console module require*/
 var fs   = require("fs")
-  , path = require("path");
+  , path = require("path")
+  , util = require("util");
+
+function valid_args (args) {
+  return args.length > 1 &&
+          args[0] != null && args[1] != null &&
+          typeof [].pop.call(args) === "function";
+}
+
+function valid_root (val) {
+  return val !== "" &&
+          {}.toString.call(val) === "[object String]";
+}
 
 function walk (start, callback) {
   fs.lstat(start, function (err, stat) {
@@ -31,11 +43,11 @@ function walk (start, callback) {
 }
 
 module.exports = function (root, interval, callback) {
-  if (arguments.length < 2) {
+  if (!valid_root(root) || !valid_args(arguments)) {
     throw("Invalid arguments");
   }
 
-  if (typeof callback === "undefined" && typeof interval === "function") {
+  if (!callback && !!interval) {
     callback = interval;
     interval = undefined;
   }
@@ -54,4 +66,16 @@ module.exports = function (root, interval, callback) {
       });
   });
 
+};
+
+module.exports.puts = function puts(error, stdout, stderr) { util.puts(stdout); };
+
+module.exports.valid = {
+  args: function () {
+    return valid_args.apply(null, [].slice.call(arguments, 0));
+  }
+
+  ,root: function (val) {
+    return valid_root(val);
+  }
 };
